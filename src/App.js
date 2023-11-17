@@ -1,25 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import { Component } from 'react';
 
-function App() {
-  return (
+class App extends Component {
+
+  constructor() {
+    super();
+
+    this.state = {
+      numeUser: 'Lucian'
+    };
+  }
+
+  render() {
+    return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+             Salut, { this.state.numeUser }
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button onClick={() => this.setState({numeUser: 'Vasile'})}> Click me to change the name of the user </button>
       </header>
     </div>
-  );
+  );  
+ 
+}
 }
 
 export default App;
