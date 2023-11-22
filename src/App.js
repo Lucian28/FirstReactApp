@@ -1,6 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
+import { CardList } from './components/card-list/cardList.compenent';
 
 class App extends Component {
 
@@ -8,20 +8,20 @@ class App extends Component {
     super();
 
     this.state = {
-      numeUser: 'Lucian'
+      monsters: []
     };
+  }
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(users => this.setState({monsters: users}));
   }
 
   render() {
     return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-             Salut, { this.state.numeUser }
-        </p>
-        <button onClick={() => this.setState({numeUser: 'Vasile'})}> Click me to change the name of the user </button>
-      </header>
+      <CardList monsters={this.state.monsters}/>
     </div>
   );  
  
